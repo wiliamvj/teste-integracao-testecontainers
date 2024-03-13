@@ -1,0 +1,27 @@
+## CreateUser
+POST http://localhost:8080/user HTTP/1.1
+content-type: application/json
+
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe2@email.com",
+  "password": "Pass@12345"
+}
+
+###
+## GetUserById
+GET http://localhost:8080/user/c292cb47-8784-44bc-9f38-25ae9a841659 HTTP/1.1
+content-type: application/json
+
+###
+
+## UpdateUser
+PATCH http://localhost:8080/user/c292cb47-8784-44bc-9f38-25ae9a841659 HTTP/1.1
+content-type: application/json
+
+{
+  "first_name": "John s",
+  "last_name": "Doe",
+  "email": "john.doe6@email.com"
+}
