@@ -31,12 +31,6 @@ beforeAll(async () => {
   process.env.DATABASE_URL = container.getConnectionUri();
   urlConnection = container.getConnectionUri();
 
-  const moduleRef = await Test.createTestingModule({
-    imports: [AppModule],
-  }).compile();
-  app = moduleRef.createNestApplication();
-  app.useGlobalPipes(new ValidationPipe());
-
   // create a new instance of PrismaClient with the connection string
   prismaClient = new PrismaClient({
     datasources: {
@@ -46,7 +40,12 @@ beforeAll(async () => {
     },
   });
 
-  // start the application
+  // start the nestjs application
+  const moduleRef = await Test.createTestingModule({
+    imports: [AppModule],
+  }).compile();
+  app = moduleRef.createNestApplication();
+  app.useGlobalPipes(new ValidationPipe());
   await app.init();
 });
 
